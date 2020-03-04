@@ -11,6 +11,8 @@ func Test_firstMissingPositiveInteger(t *testing.T) {
 		args args
 		want int
 	}{
+		{"-1", args{arr: []int{1, 1}}, 2},
+		{"0", args{arr: []int{1, -1, -5, -3, 3, 4, 2, 8}}, 5},
 		{"1", args{arr: []int{3, 4, -1, 1}}, 2},
 		{"2", args{arr: []int{1, 2, 0}}, 3},
 		{"3", args{arr: []int{2, 2, 0}}, 1},
