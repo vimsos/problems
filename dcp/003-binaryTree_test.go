@@ -1,4 +1,4 @@
-package dailycodeproblem
+package dcp
 
 import (
 	"testing"
