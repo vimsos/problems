@@ -1,7 +1,6 @@
 package dcp
 
 import (
-	"fmt"
 	"math"
 	"math/rand"
 	"time"
@@ -30,7 +29,6 @@ func mcpi() float64 {
 
 		val = 4 * float64(hits) / float64(total)
 	}
-	fmt.Println(total)
 	return val
 }
 
