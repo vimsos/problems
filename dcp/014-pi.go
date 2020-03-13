@@ -17,7 +17,7 @@ func mcpi() float64 {
 	hits := 0
 	total := 0
 
-	for f64abs(val-pi) > 0.0001 {
+	for math.Abs(val-pi) > 0.0001 {
 		total++
 
 		x := rand.Float64()*2 - 1
@@ -30,11 +30,4 @@ func mcpi() float64 {
 		val = 4 * float64(hits) / float64(total)
 	}
 	return val
-}
-
-func f64abs(v float64) float64 {
-	if v < 0 {
-		return -v
-	}
-	return v
 }

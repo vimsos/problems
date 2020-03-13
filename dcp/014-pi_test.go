@@ -19,7 +19,7 @@ func Test_mcpi(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := mcpi(); f64abs(got-tt.want) > 0.0001 {
+			if got := mcpi(); math.Abs(got-tt.want) > 0.0001 {
 				t.Errorf("mcpi() = %v, want %v", got, tt.want)
 			}
 		})
