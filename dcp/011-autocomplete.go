@@ -12,24 +12,22 @@ type trieNode struct {
 	word     *string
 }
 
-var rootNode trieNode
-
-func findWords(n *trieNode, f *[]string) {
+func (n *trieNode) getWords(f *[]string) {
 	if n.word != nil {
 		*f = append(*f, *n.word)
 	}
 
 	if (*n).children != nil {
 		for _, v := range *n.children {
-			findWords(v, f)
+			(*v).getWords(f)
 		}
 	}
 }
 
-func query(q string) []string {
+func (n *trieNode) query(q string) []string {
 	found := []string{}
 	r := []rune(q)
-	curr := &rootNode
+	curr := n
 
 	for i := 0; i < len(r); i++ {
 		if n, ok := (*curr.children)[r[i]]; ok {
@@ -39,19 +37,19 @@ func query(q string) []string {
 		}
 	}
 
-	findWords(curr, &found)
+	(*curr).getWords(&found)
 	return found
 }
 
-func insert(s string) {
+func (n *trieNode) insert(s string) {
 	s = strings.TrimSpace(s)
 	r := []rune(s)
-	curr := &rootNode
+	curr := n
 
 	for i := 0; i < len(r); i++ {
 		if _, ok := (*curr.children)[r[i]]; !ok {
 			next := &trieNode{}
-			initTrieNode(next, r[i])
+			(*next).initTrieRoot(r[i])
 			(*curr.children)[r[i]] = next
 			curr = next
 		} else {
@@ -62,13 +60,13 @@ func insert(s string) {
 	(*curr).word = &s
 }
 
-func insertMany(input []string) {
+func (n *trieNode) insertMany(input []string) {
 	for _, s := range input {
-		insert(s)
+		(*n).insert(s)
 	}
 }
 
-func initTrieNode(n *trieNode, r rune) {
+func (n *trieNode) initTrieRoot(r rune) {
 	children := make(map[rune]*trieNode)
 	*n = trieNode{key: r, children: &children}
 }
