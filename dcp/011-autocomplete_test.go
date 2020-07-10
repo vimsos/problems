@@ -36,7 +36,7 @@ func Test_insertManyQuery(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			root := &trieNode{}
-			root.initTrieRoot('*')
+			root.initTrieNode('*')
 			root.insertMany(tt.args.input)
 
 			got := root.query(tt.args.query)

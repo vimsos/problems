@@ -49,7 +49,7 @@ func (n *trieNode) insert(s string) {
 	for i := 0; i < len(r); i++ {
 		if _, ok := (*curr.children)[r[i]]; !ok {
 			next := &trieNode{}
-			(*next).initTrieRoot(r[i])
+			(*next).initTrieNode(r[i])
 			(*curr.children)[r[i]] = next
 			curr = next
 		} else {
@@ -66,7 +66,7 @@ func (n *trieNode) insertMany(input []string) {
 	}
 }
 
-func (n *trieNode) initTrieRoot(r rune) {
+func (n *trieNode) initTrieNode(r rune) {
 	children := make(map[rune]*trieNode)
 	*n = trieNode{key: r, children: &children}
 }
