@@ -2,8 +2,7 @@ kind: pipeline
 name: default
 
 steps:
-- name: test-dcp
+- name: test
   image: golang
-  workspace: dcp
   commands:
-  - go test
+  - cd dcp && go test
