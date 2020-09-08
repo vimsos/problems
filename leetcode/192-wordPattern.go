@@ -14,7 +14,7 @@ import (
 
 func wordPattern(pattern string, str string) bool {
 	rMap := make(map[rune]*string)
-	wMap := make(map[string]rune)
+	wMap := make(map[string]*rune)
 	runes := []rune(pattern)
 	words := strings.Split(str, " ")
 
@@ -23,9 +23,12 @@ func wordPattern(pattern string, str string) bool {
 	}
 	for i, r := range runes {
 		if rMap[r] == nil {
+			if wMap[words[i]] != nil {
+				return false
+			}
 			rMap[r] = &words[i]
-			wMap[words[i]] = r
-		} else if *rMap[r] != words[i] || wMap[*rMap[r]] != r {
+			wMap[words[i]] = &r
+		} else if *rMap[r] != words[i] {
 			return false
 		}
 	}
