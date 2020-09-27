@@ -11,7 +11,7 @@ func columnIDToAlpha(id int) string {
 		if r == 0 {
 			r, id = 26, id-1
 		}
-		alpha = string('A'+r-1) + alpha
+		alpha = string(rune('A'+r-1)) + alpha
 	}
 	return alpha
 }

@@ -22,7 +22,7 @@ func Test_columnIDToAlpha(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := columnIDToAlpha(tt.args.id); got != tt.want {
-				t.Errorf("alphaColumnID(%v) = %v, want %v",tt.args.id, got, tt.want)
+				t.Errorf("columnIDToAlpha(%v) = %v, want %v",tt.args.id, got, tt.want)
 			}
 		})
 	}
